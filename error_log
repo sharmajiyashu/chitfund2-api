@@ -1,0 +1,178 @@
+[24-Dec-2021 08:59:55 UTC] PHP Fatal error:  Cannot redeclare Api::saveBidByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 219
+[24-Dec-2021 09:01:26 UTC] PHP Fatal error:  Cannot redeclare Api::saveBidByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 219
+[24-Dec-2021 09:01:40 UTC] PHP Fatal error:  Cannot redeclare Api::saveBidByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 219
+[24-Dec-2021 09:02:52 UTC] PHP Fatal error:  Cannot redeclare Api::saveBidByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 219
+[24-Dec-2021 09:05:56 UTC] PHP Fatal error:  Cannot redeclare Api::saveBidByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 219
+[24-Dec-2021 09:20:31 UTC] PHP Fatal error:  Cannot redeclare Api::bidsByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 236
+[24-Dec-2021 09:20:57 UTC] PHP Fatal error:  Cannot redeclare Api::bidsByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 236
+[24-Dec-2021 09:21:27 UTC] PHP Fatal error:  Cannot redeclare Api::bidsByAgent() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 236
+[04-Jan-2022 06:20:30 UTC] PHP Fatal error:  Cannot redeclare Api::subscriberUpdate() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 963
+[20-Jan-2022 07:40:41 UTC] PHP Fatal error:  Cannot use [] for reading in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 146
+[20-Jan-2022 07:40:57 UTC] PHP Fatal error:  Cannot use [] for reading in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 146
+[25-Jan-2022 09:04:34 UTC] PHP Fatal error:  Cannot use [] for reading in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 118
+[31-Jan-2022 10:27:54 UTC] PHP Fatal error:  Cannot redeclare Api::getTransactionsHistory() in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 2065
+[22-Feb-2022 09:26:05 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:05 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:08 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:09 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:26 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:26 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:30 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:31 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:52 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:26:53 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:28:24 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:28:24 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:29:49 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:36:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:36:22 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:36:22 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:36:46 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:36:53 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:36:58 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:37:00 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:37:10 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:38:46 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:39:41 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3031
+[22-Feb-2022 09:40:23 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3024
+[22-Feb-2022 09:41:27 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:41:29 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:41:29 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:41:36 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:42:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:42:54 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:43:04 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3020
+[22-Feb-2022 09:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[22-Feb-2022 09:44:24 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[22-Feb-2022 09:44:49 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[22-Feb-2022 09:47:25 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[22-Feb-2022 09:48:56 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[22-Feb-2022 09:49:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3021
+[10-Mar-2022 13:25:41 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/DB_query_builder.php on line 1321
+[10-Mar-2022 13:25:41 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[10-Mar-2022 16:14:08 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4210688 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_driver.php on line 307
+[10-Mar-2022 16:14:08 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4210688 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_driver.php on line 307
+[10-Mar-2022 16:14:08 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4210688 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_driver.php on line 307
+[12-Mar-2022 01:07:11 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4210688 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_driver.php on line 307
+[12-Mar-2022 12:29:34 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_result.php on line 214
+[12-Mar-2022 12:29:34 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[12-Mar-2022 12:30:13 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_result.php on line 214
+[12-Mar-2022 12:30:13 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[12-Mar-2022 12:30:38 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_result.php on line 214
+[12-Mar-2022 12:30:38 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[12-Mar-2022 12:30:44 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_result.php on line 214
+[12-Mar-2022 12:30:44 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[12-Mar-2022 10:29:19 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 2931
+[12-Mar-2022 10:30:49 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 2931
+[12-Mar-2022 10:31:36 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 2932
+[12-Mar-2022 10:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 10:44:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 10:50:41 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 10:53:47 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:02:44 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:12:16 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:27:34 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:27:38 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:27:48 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:27:52 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:27:53 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:28:06 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:28:16 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:28:26 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 11:31:30 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3007
+[12-Mar-2022 13:18:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:22:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:04 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:04 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:20 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:27 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 13:33:31 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 14:18:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 14:44:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 15:36:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 16:00:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 16:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 17:22:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 17:54:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 18:22:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 19:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 19:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 20:18:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 21:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 21:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 22:22:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 22:54:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[12-Mar-2022 23:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 00:00:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 01:00:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 01:18:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 02:00:12 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 02:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 03:22:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 03:54:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 04:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 04:54:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 06:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 06:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 07:18:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 07:22:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 08:18:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 08:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 09:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 09:44:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 10:54:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 11:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 12:00:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 12:22:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 13:18:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 13:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 14:36:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:00:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:27:24 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:27:31 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:29:33 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:29:57 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:31:36 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:32:33 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:48:33 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:49:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:49:35 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:49:58 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3015
+[13-Mar-2022 15:50:30 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:53:09 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:53:42 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:54:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:54:41 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 15:55:44 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 16:02:16 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 16:02:27 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 16:22:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 16:28:48 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3014
+[13-Mar-2022 16:54:02 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 17:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:27:29 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:29:12 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:30:46 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:31:26 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3012
+[13-Mar-2022 18:44:01 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[13-Mar-2022 18:45:46 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 3011
+[26-Mar-2022 09:52:00 UTC] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 2644
+[07-Apr-2022 18:05:19 Asia/Calcutta] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_driver.php on line 307
+[11-Apr-2022 21:00:57 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/database/drivers/mysqli/mysqli_result.php on line 214
+[11-Apr-2022 21:00:57 Asia/Calcutta] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 32768 bytes) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/system/core/Exceptions.php on line 1
+[21-Apr-2022 05:58:17 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5093
+[11-May-2022 07:26:06 UTC] PHP Deprecated:  Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)` in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5492
+[11-May-2022 07:26:06 UTC] PHP Deprecated:  Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)` in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5492
+[11-May-2022 07:28:12 UTC] PHP Deprecated:  Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)` in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5492
+[11-May-2022 07:28:12 UTC] PHP Deprecated:  Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)` in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5492
+[11-May-2022 08:29:35 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 5497
+[28-May-2022 06:33:48 UTC] PHP Deprecated:  Unparenthesized `a ? b : c ? d : e` is deprecated. Use either `(a ? b : c) ? d : e` or `a ? b : (c ? d : e)` in /home1/molni2j8/public_html/www.premad.in/chitfund_api/application/controllers/Api.php on line 6018
+[05-Aug-2022 09:59:47 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 09:59:50 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 09:59:57 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 10:00:00 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 10:00:03 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 10:00:04 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
+[05-Aug-2022 10:00:27 UTC] PHP Fatal error:  Cannot use empty array elements in arrays in /home1/molni2j8/public_html/www.premad.in/chitfund_api2/application/controllers/Api.php on line 6451
