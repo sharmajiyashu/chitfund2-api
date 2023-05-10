@@ -1226,55 +1226,9 @@ public function saveBidByAgent(){
             );
 			$this->db->insert('tbl_plans',$data);
 	    	$insert_id = $this->db->insert_id();
-	    	
-	    	$check_insert_id = $this->db->select('insert_id')->ORDER_BY('general_ledger_master_id','DESC')->get('tbl_general_ledger_master')->row_array();
-	    	if(!empty($check_insert_id['insert_id'])){
-                $insert_id2 =$check_insert_id['insert_id'] + 1;
-            }else{
-                $insert_id2 = 1;
-            }
-            
-            $ledgerdata1 = array(
-                    'insert_id'=> $insert_id2,
-                    'c_code' => '314',
-                    'category_desc' => 'Stamp Fees',
-                    'plan_name' => isset($plan_name) ? $plan_name :'',
-                    'transaction_mode' => 'J1 - Internal',
-                    'transaction_type' => 'Plan Registration',
-                    'transaction_description' => '',
-                    'amount' => isset($plan_amount) ? $plan_amount : '',
-                    'Dr/Cr' =>'Dr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_id) ? $member_id : '',
-                    'added_date' => date('Y-m-d h:i:s'),
-                    'account_description' => 'Plan Registration Fees',
-                    'gl_account' => '1002',
-                    'type' => 'Payment',
-                    'user'=> 'Senthil'
-                );
-                 $insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
-                 $insert_id2 = $this->db->insert_id();
-                 $selest_ensert_id = $this->db->where('general_ledger_master_id',$insert_id2)->get('tbl_general_ledger_master')->row_array();
-                  $ledgerdata2 = array(
-                    'insert_id'=> $selest_ensert_id['insert_id'],
-                    'c_code' => '314',
-                    'category_desc' => 'Stamp Fees',
-                    'plan_name' => isset($plan_name) ? $plan_name :'',
-                    'transaction_mode' => 'J1 - Internal',
-                    'transaction_type' => 'Plan Registration',
-                    'transaction_description' => '',
-                    'amount' => isset($plan_amount) ? $plan_amount : '',
-                    'Dr/Cr' =>'Cr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_id) ? $member_id : '',
-                    'added_date' => date('Y-m-d h:i:s'),
-                    'account_description' => 'Franking Charges',
-                    'gl_account' => '1002',
-                    'type' => 'Payment',
-                    'user'=> 'Senthil'
-                );
-                $this->db->insert('tbl_general_ledger_master',$ledgerdata2);
-                
+
+	    	$create_plan_general_legder  = $this->create_plan_general_legder($insert_id);
+    
 		    $ParticiDetails = isset($groups_counts) ?  $groups_counts  : '';		
 			$char_arr = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 			for($kk=0; $kk<$ParticiDetails; $kk++){
@@ -6604,6 +6558,138 @@ public function saveBidByAgent(){
         }else{
             return $code;
         }
-     }
+    }
+
+	 function create_plan_general_legder($plan_id){
+
+		$plan_data = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
+		$ledgerdata1 = array(
+			'insert_id'=> '1',
+			'c_code' => '505',
+			'category_desc' => 'Prized Money due',
+			'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'Prize disbursal',
+			'transaction_description' => 'Gross Prize Amt Due',
+			'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
+			'Dr/Cr' =>'Dr',
+			'sub_id' => '',
+			'account_name' => 'MYM Chit Fund Pvt Ltd',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => 'Plan A/c',
+			'gl_account' => '1003',
+			'type' => 'Payment',
+			'user'=> 'Senthil'
+		);
+		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+		 
+		$ledgerdata2 = array(
+			'insert_id'=> '1',
+			'c_code' => '505',
+			'category_desc' => 'Prized Money due',
+			'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'Prize disbursal',
+			'transaction_description' => 'Gross Prize Amt Due',
+			'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
+			'Dr/Cr' =>'Cr',
+			'sub_id' => '',
+			'account_name' => 'MYM Chit Fund Pvt Ltd',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => 'Subscribers A/c',
+			'gl_account' => '1002',
+			'type' => 'Payment',
+			'user'=> 'Senthil'
+		);
+		$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+
+		$admission_fee =   $plan_data['admission_fee'] * $plan_data['plan_amount'] / 100 ;
+
+		for($i=0 ;$i<$plan_data['groups_counts'] ; $i++){
+			
+			
+			$ledgerdata1 = array(
+				'insert_id'=> '1',
+				'c_code' => '203',
+				'category_desc' => 'Application Fee',
+				'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+				'transaction_mode' => 'J1 - Internal',
+				'transaction_type' => 'Plan Registration',
+				'transaction_description' => '',
+				'amount' => isset($admission_fee) ? $admission_fee : '',
+				'Dr/Cr' =>'Dr',
+				'sub_id' => '',
+				'account_name' => 'MYM Chit Fund Pvt Ltd',
+				'added_date' => date('Y-m-d h:i:s'),
+				'account_description' => 'Subscribers A/c',
+				'gl_account' => '2002',
+				'type' => 'Payment',
+				'user'=> 'Senthil'
+			);
+			$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+			 
+			$ledgerdata2 = array(
+				'insert_id'=> '1',
+				'c_code' => '203',
+				'category_desc' => 'Application Fee',
+				'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+				'transaction_mode' => 'J1 - Internal',
+				'transaction_type' => 'Plan Registration',
+				'transaction_description' => '',
+				'amount' => isset($admission_fee) ? $admission_fee : '',
+				'Dr/Cr' =>'Cr',
+				'sub_id' => '',
+				'account_name' => 'MYM Chit Fund Pvt Ltd',
+				'added_date' => date('Y-m-d h:i:s'),
+				'account_description' => 'Application Fee',
+				'gl_account' => '3400',
+				'type' => 'Payment',
+				'user'=> 'Senthil'
+			);
+			$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+
+			$ledgerdata1 = array(
+				'insert_id'=> '1',
+				'c_code' => '203',
+				'category_desc' => 'Application Fee',
+				'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+				'transaction_mode' => 'B1 - Cheque',
+				'transaction_type' => 'Plan Registration',
+				'transaction_description' => '',
+				'amount' => isset($admission_fee) ? $admission_fee : '',
+				'Dr/Cr' =>'Dr',
+				'sub_id' => '',
+				'account_name' => 'MYM Chit Fund Pvt Ltd',
+				'added_date' => date('Y-m-d h:i:s'),
+				'account_description' => 'Application Fee',
+				'gl_account' => '3400',
+				'type' => 'Payment',
+				'user'=> 'Senthil'
+			);
+			$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+			 
+			$ledgerdata2 = array(
+				'insert_id'=> '1',
+				'c_code' => '203',
+				'category_desc' => 'Application Fee',
+				'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+				'transaction_mode' => 'B1 - Cheque',
+				'transaction_type' => 'Plan Registration',
+				'transaction_description' => '',
+				'amount' => isset($admission_fee) ? $admission_fee : '',
+				'Dr/Cr' =>'Cr',
+				'sub_id' => '',
+				'account_name' => 'MYM Chit Fund Pvt Ltd',
+				'added_date' => date('Y-m-d h:i:s'),
+				'account_description' => 'Plan Registration Fees',
+				'gl_account' => '2102',
+				'type' => 'Payment',
+				'user'=> 'Senthil'
+			);
+			$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+		}
+
+				
+	 }
 	
 }
