@@ -1944,22 +1944,24 @@ public function saveBidByAgent(){
                 $insert_id = 1;
             }
             
+			$member_data = $this->db->where('member_id',$member_id)->get('tbl_members')->row_array();
             $ledgerdata1 = array(
                     'insert_id'=> $insert_id,
                     'c_code' => '400',
                     'category_desc' => 'Subscription',
                     'plan_name' => isset($plan_name) ? $plan_name :'',
-                    'transaction_mode' => isset($payment_mode) ? $payment_mode : 'offline',
+                    'transaction_mode' => 'J1 - Internal',
                     'transaction_type' => 'Subscription Due',
                     'transaction_description' => 'Subscribers A/c',
                     'amount' => isset($plan_amount) ? $plan_amount : '',
                     'Dr/Cr' =>'Dr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_id) ? $member_id : '',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
                     'added_date' => date('Y-m-d h:i:s'),
                     'account_description' => 'Subscribers A/c',
                     'gl_account' => '1002',
                     'type' => 'Payment',
+					'user' =>'Senthil'
                 );
                  $insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
                  $insert_id = $this->db->insert_id();
@@ -1969,17 +1971,18 @@ public function saveBidByAgent(){
                     'c_code' => '400',
                     'category_desc' => 'Subscription',
                     'plan_name' => isset($plan_name) ? $plan_name :'',
-                    'transaction_mode' => isset($payment_mode) ? $payment_mode : 'offline',
+                    'transaction_mode' => 'J1 - Internal',
                     'transaction_type' => 'Subscription Due',
                     'transaction_description' => 'Plan A/c',
                     'amount' => isset($plan_amount) ? $plan_amount : '',
                     'Dr/Cr' =>'Cr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_id) ? $member_id : '',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
                     'added_date' => date('Y-m-d h:i:s'),
                     'account_description' => 'Plan A/c',
-                    'gl_account' => '1002',
+                    'gl_account' => '1003',
                     'type' => 'Payment',
+					'user' =>'Senthil'
                 );
                 $this->db->insert('tbl_general_ledger_master',$ledgerdata2);
 	          
@@ -4124,7 +4127,10 @@ public function saveBidByAgent(){
         );
         $this->db->insert('tbl_orders',$data);
         $insert_id = $this->db->insert_id();
-        
+
+
+        $member_data = $this->db->where('member_id',$member_id)->get('tbl_members')->row_array();
+		$plan_data = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
         if(!empty($check_insert_id['insert_id'])){
                 $insert_id =$check_insert_id['insert_id'] + 1;
             }else{
@@ -4134,18 +4140,19 @@ public function saveBidByAgent(){
                     'insert_id'=> $insert_id,
                     'c_code' => '400',
                     'category_desc' => 'Subscription',
-                    'plan_name' => isset($plan_name) ? $plan_name :'',
+                    'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
                     'transaction_mode' => 'J1 - Internal',
                     'transaction_type' => 'Subscription Cancellation',
                     'transaction_description' => '',
-                    'amount' => isset($getdata['plan_amount']) ? $getdata['plan_amount'] : '',
+                    'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
                     'Dr/Cr' =>'Dr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_name) ? $member_name : '',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
                     'added_date' => date('Y-m-d h:i:s'),
                     'account_description' => 'Plan A/c',
-                    'gl_account' => '1002',
+                    'gl_account' => '1003',
                     'type' => 'Payment',
+					'user' => 'Senthil'
                 );
                  $insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
                  $insert_id = $this->db->insert_id();
@@ -4154,18 +4161,19 @@ public function saveBidByAgent(){
                     'insert_id'=> $selest_ensert_id['insert_id'],
                     'c_code' => '400',
                     'category_desc' => 'Subscription',
-                    'plan_name' => isset($getdata['plan_name']) ? $getdata['plan_name'] :'',
+                    'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
                     'transaction_mode' => 'J1 - Internal',
                     'transaction_type' => 'Subscription Cancellation',
                     'transaction_description' => '',
-                    'amount' => isset($getdata['plan_amount']) ? $getdata['plan_amount'] : '',
+                    'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
                     'Dr/Cr' =>'Cr',
-                    'sub_id' => isset($member_id) ? $member_id : '',
-                    'account_name' => isset($member_name) ? $member_name : '',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
                     'added_date' => date('Y-m-d h:i:s'),
                     'account_description' => 'Subscribers A/c',
                     'gl_account' => '1002',
                     'type' => 'Payment',
+					'user' => 'Senthil'
                 );
                 $this->db->insert('tbl_general_ledger_master',$ledgerdata2);
         if($insert_id != ''){
@@ -4249,20 +4257,63 @@ public function saveBidByAgent(){
 			); 
 		}
 	 }
-    $output = array(
-       'status' => Success,
-       'message' => 'Insert Order table  Subscription',
-       'data' => []
-    );
-      
-     }else{
-        $output = array(
-	      'status' => Failure,
-	      'message' => "Slot number and Member Id are blanked",
-	      'data' => []
-	    ); 
-     }
-     echo json_encode($output); die;
+
+	 $member_data = $this->db->where('member_id',$member_id)->get('tbl_members')->row_array();
+	 $plan_data = $this->db->where('plan_id',$getorder['plan_id'])->get('tbl_plans')->row_array();
+            $ledgerdata1 = array(
+                    'insert_id'=> isset($insert_id) ? $insert_id :'1',
+                    'c_code' => '400',
+                    'category_desc' => 'Subscription',
+                    'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+                    'transaction_mode' => 'J1 - Internal',
+                    'transaction_type' => 'Subscription Due',
+                    'transaction_description' => 'Subscribers A/c',
+                    'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
+                    'Dr/Cr' =>'Dr',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
+                    'added_date' => date('Y-m-d h:i:s'),
+                    'account_description' => 'Subscribers A/c',
+                    'gl_account' => '1002',
+                    'type' => 'Payment',
+					'user' =>'Senthil'
+                );
+                 $insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+                 $insert_id = $this->db->insert_id();
+                 $selest_ensert_id = $this->db->where('general_ledger_master_id',$insert_id)->get('tbl_general_ledger_master')->row_array();
+                  $ledgerdata2 = array(
+                    'insert_id'=> $selest_ensert_id['insert_id'],
+                    'c_code' => '400',
+                    'category_desc' => 'Subscription',
+                    'plan_name' => isset($plan_data['plan_name']) ? $plan_data['plan_name'] :'',
+                    'transaction_mode' => 'J1 - Internal',
+                    'transaction_type' => 'Subscription Due',
+                    'transaction_description' => 'Plan A/c',
+                    'amount' => isset($plan_data['plan_amount']) ? $plan_data['plan_amount'] : '',
+                    'Dr/Cr' =>'Cr',
+                    'sub_id' => isset($member_data['subscriber_id']) ? $member_data['subscriber_id'] : '',
+                    'account_name' => isset($member_data['name']) ? $member_data['name'] : '',
+                    'added_date' => date('Y-m-d h:i:s'),
+                    'account_description' => 'Plan A/c',
+                    'gl_account' => '1003',
+                    'type' => 'Payment',
+					'user' =>'Senthil'
+                );
+                $this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+		$output = array(
+		'status' => Success,
+		'message' => 'Insert Order table  Subscription',
+		'data' => []
+		);
+		
+		}else{
+			$output = array(
+			'status' => Failure,
+			'message' => "Slot number and Member Id are blanked",
+			'data' => []
+			); 
+		}
+		echo json_encode($output); die;
 	}
 	
 
