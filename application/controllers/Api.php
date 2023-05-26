@@ -7029,7 +7029,119 @@ public function saveBidByAgent(){
 		);
 		$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
 
+		// GST - Foreman Comission
+
+		$forman_commition = $plandetails['min_bid_amount'];
+		$gst = $this->db->get('tbl_gst_master')->row_array();
+		$gst_per = isset($gst['amount']) ? $gst['amount'] : 17 ;
+
+		$forman_gst = $forman_commition * $gst_per / 100;
+
+		$ledgerdata1 = array(
+			'insert_id'=> '1',
+			'c_code' => '705',
+			'plan_id' => $plan_id,
+			'category_desc' => 'GST - Foreman Comission',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'GST',
+			'transaction_description' => '',
+			'amount' => isset($forman_gst) ? $forman_gst : '',
+			'Dr/Cr' =>'Dr',
+			'sub_id' => isset($mamberdetail['subscriber_id']) ? $mamberdetail['subscriber_id'] : '',
+			'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+			'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount('1002'),
+			'gl_account' => '1002',
+			'type' => 'Payment',
+			'user'=> 'Senthil',
+			'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+			// 'slot_number' => isset($assign_order_id['slot_number']) ? $assign_order_id['slot_number'] :'',
+		);
+		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+		 
+		$ledgerdata2 = array(
+			'insert_id'=> '1',
+			'c_code' => '705',
+			'plan_id' => $plan_id,
+			'category_desc' => 'GST - Foreman Comission',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'GST',
+			'transaction_description' => '',
+			'amount' => isset($forman_gst) ? $forman_gst : '',
+			'Dr/Cr' =>'Cr',
+			'sub_id' => isset($mamberdetail['subscriber_id']) ? $mamberdetail['subscriber_id'] : '',
+			'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+			'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount('2500'),
+			'gl_account' => '2500',
+			'type' => 'Payment',
+			'user'=> 'Senthil',
+			// 'slot_number' => isset($assign_order_id['slot_number']) ? $assign_order_id['slot_number'] :'',
+		);
+		$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+
+		// GST - Registration Fees
+		$forman_commition = isset($plandetails['admission_amount']) ? $plandetails['admission_amount'] : '';
+		$gst = $this->db->get('tbl_gst_master')->row_array();
+		$gst_per = isset($gst['amount']) ? $gst['amount'] : 17 ;
+		$forman_gst = $forman_commition * $gst_per / 100;
+
+		$ledgerdata1 = array(
+			'insert_id'=> '1',
+			'c_code' => '706',
+			'plan_id' => $plan_id,
+			'category_desc' => 'GST - Registration Fees',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'GST',
+			'transaction_description' => '',
+			'amount' => isset($forman_gst) ? $forman_gst : '',
+			'Dr/Cr' =>'Dr',
+			'sub_id' => isset($mamberdetail['subscriber_id']) ? $mamberdetail['subscriber_id'] : '',
+			'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount('1002'),
+			'gl_account' => '1002',
+			'type' => 'Payment',
+			'user'=> 'Senthil',
+			'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+		);
+		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+		 
+		$ledgerdata2 = array(
+			'insert_id'=> '1',
+			'c_code' => '706',
+			'plan_id' => $plan_id,
+			'category_desc' => 'GST - Registration Fees',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'GST',
+			'transaction_description' => '',
+			'amount' => isset($forman_gst) ? $forman_gst : '',
+			'Dr/Cr' =>'Cr',
+			'sub_id' => isset($mamberdetail['subscriber_id']) ? $mamberdetail['subscriber_id'] : '',
+			'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+			'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount('2500'),
+			'gl_account' => '2500',
+			'type' => 'Payment',
+			'user'=> 'Senthil',
+			// 'slot_number' => isset($assign_order_id['slot_number']) ? $assign_order_id['slot_number'] :'',
+		);
+		$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
+
+
+
+
 		// Total Monthly Div Due to All Subscribers
+
+		$divident = $chit_detail['forgo_amount'] - $plandetails['min_bid_amount'];
+		$each_divident = $divident / $plandetails['tenure'];
 
 		$ledgerdata1 = array(
 			'insert_id'=> '1',
@@ -7040,7 +7152,7 @@ public function saveBidByAgent(){
 			'transaction_mode' => 'J1 - Internal',
 			'transaction_type' => 'Dividend',
 			'transaction_description' => 'Total Monthly Div Due to All Subscribers',
-			'amount' => isset($plandetails['min_bid_amount']) ? $plandetails['min_bid_amount'] : '',
+			'amount' => isset($divident) ? $divident : '',
 			'Dr/Cr' =>'Dr',
 			// 'sub_id' => isset($company_member['subscriber_id']) ? $company_member['subscriber_id'] : '',
 			'account_name' => 'MYM Chit Fund Pvt Ltd',
@@ -7062,7 +7174,7 @@ public function saveBidByAgent(){
 			'transaction_mode' => 'J1 - Internal',
 			'transaction_type' => 'Dividend',
 			'transaction_description' => 'Total Monthly Div Due to All Subscribers',
-			'amount' => isset($plandetails['min_bid_amount']) ? $plandetails['min_bid_amount'] : '',
+			'amount' => isset($divident) ? $divident : '',
 			'Dr/Cr' =>'Cr',
 			// 'sub_id' => isset($company_member['subscriber_id']) ? $company_member['subscriber_id'] : '',
 			'account_name' => 'MYM Chit Fund Pvt Ltd',
@@ -7077,8 +7189,7 @@ public function saveBidByAgent(){
 
 		// Dividend Allocation by plan to Individual subscribers
 
-		$divident = $chit_detail['forgo_amount'] - $plandetails['min_bid_amount'];
-		$each_divident = $divident / $plandetails['tenure'];
+		
 		$ledgerdata1 = array(
 			'insert_id'=> '1',
 			'c_code' => '501',
