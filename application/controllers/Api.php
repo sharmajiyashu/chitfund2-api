@@ -3911,12 +3911,12 @@ public function saveBidByAgent(){
 						$foreman_fees_detail = $this->db->select('foreman_fees,total_months')->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
 						$foreman_fees = $foreman_fees_detail['foreman_fees'];
 						$total_months = $foreman_fees_detail['total_months'];
-						$group_details_member = $this->db->select('total_members')->where('group_id',$group_id)->get('tbl_groups')->row_array(); 
-						$group_member = $group_details_member['total_members'];
+						$group_details_member = $this->db->select('total_members')->get('tbl_groups')->row_array(); 
+						// $group_details_member = $this->db->select('total_members')->where('group_id',$group_id)->get('tbl_groups')->row_array(); 
+						$plan_detail = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
+						$group_member = $plan_detail['total_subscription'];
 						$forman_amount = $total_amount_due*$foreman_fees/100;
 						$divident_amount = ($total_amount_due -($chit_amount + $forman_amount)) / $group_member;
-						
-						$plan_detail = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
 						
 						if($plan_detail['auction_type'] == 'fixed_auction'){
 						    
@@ -3936,7 +3936,8 @@ public function saveBidByAgent(){
     							$emidivident = array(
     								'divident' => $divident_amount
     							);
-    							$this->db->where('emi_no',$dividint_months_sub)->where('group_id',$group_id)->where('plan_id',$plan_id)->update('tbl_emi',$emidivident);
+    							// $this->db->where('emi_no',$dividint_months_sub)->where('group_id',$group_id)->where('plan_id',$plan_id)->update('tbl_emi',$emidivident);
+    							$this->db->where('emi_no',$dividint_months_sub)->where('plan_id',$plan_id)->update('tbl_emi',$emidivident);
 						}else{
 						    $divident_amount2 = ($total_amount_due -($chit_amount + $forman_amount));
 						    
@@ -5753,6 +5754,7 @@ public function saveBidByAgent(){
                     $category_desc = 'Chit Handover Received ';
                 }
                
+				$member_data_2 = $this->get_member_detail($submit_data['subscriber_id']);
                 $data = array(
                     'insert_id'=> $insert_id,
                     'c_code' => isset($c_code) ? $c_code :'',
@@ -6801,7 +6803,7 @@ public function saveBidByAgent(){
 			'user' => 'Senthil',
 		);
 		$this->db->insert('tbl_general_ledger_master',$ledgerdata2);
-
+		// subscrition due ledger
 		$total_group_members = $this->db->where('plan_id',$chit_detail['plan_id'])->where('group_id',$chit_detail['group_id'])->where('slot_status','assigned')->get('tbl_orders')->result_array();
 		foreach($total_group_members as $key=>$val){
 			$member_data_2 = $this->get_member_detail($val['member_id']);
@@ -7141,7 +7143,7 @@ public function saveBidByAgent(){
 		// Total Monthly Div Due to All Subscribers
 
 		$divident = $chit_detail['forgo_amount'] - $plandetails['min_bid_amount'];
-		$each_divident = $divident / $plandetails['tenure'];
+		$each_divident = $divident / $plandetails['total_subscription'];
 
 		$ledgerdata1 = array(
 			'insert_id'=> '1',
@@ -7211,7 +7213,7 @@ public function saveBidByAgent(){
 			// 'slot_number' => isset($assign_order_id['slot_number']) ? $assign_order_id['slot_number'] :'',
 		);
 		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
-
+		$total_group_members = $this->db->where('plan_id',$chit_detail['plan_id'])->where('slot_status','assigned')->get('tbl_orders')->result_array();
 		foreach($total_group_members as $key=>$val){
 			$member_data_2 = $this->get_member_detail($val['member_id']);
 			$ledgerdata1 = array(
