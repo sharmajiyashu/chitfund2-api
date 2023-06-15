@@ -2244,8 +2244,8 @@ public function saveBidByAgent(){
                                     'sub_id' => isset($member_id) ? $member_id : '',
                                     'account_name' => isset($member_id) ? $member_id : '',
                                     'added_date' => date('Y-m-d h:i:s'),
-                                    'account_description' => 'Plan A/c',
-                                    'gl_account' => '1002',
+                                    'account_description' => $this->getGlAccount('1003'),
+                                    'gl_account' => '1003',
                                     'type' => 'Payment',
                                     'user' => 'Senthil',
                                 );
@@ -2265,8 +2265,8 @@ public function saveBidByAgent(){
                                     'sub_id' => isset($member_id) ? $member_id : '',
                                     'account_name' => isset($member_id) ? $member_id : '',
                                     'added_date' => date('Y-m-d h:i:s'),
-                                    'account_description' => 'Bid A/c',
-                                    'gl_account' => '1002',
+                                    'account_description' => $this->getGlAccount('1004'),
+                                    'gl_account' => '1004',
                                     'type' => 'Payment',
                                     'user' => 'Senthil',
                                 );
@@ -2816,8 +2816,8 @@ public function saveBidByAgent(){
                                     'sub_id' => isset($member_id) ? $member_id : '',
                                     'account_name' => isset($member_id) ? $member_id : '',
                                     'added_date' => date('Y-m-d h:i:s'),
-                                    'account_description' => 'Plan A/c',
-                                    'gl_account' => '1002',
+                                    'account_description' => $this->getGlAccount('1003'),
+                                    'gl_account' => '1003',
                                     'type' => 'Payment',
                                     'user' => 'Senthil',
                                 );
@@ -2837,8 +2837,8 @@ public function saveBidByAgent(){
                                     'sub_id' => isset($member_id) ? $member_id : '',
                                     'account_name' => isset($member_id) ? $member_id : '',
                                     'added_date' => date('Y-m-d h:i:s'),
-                                    'account_description' => 'Bid A/c',
-                                    'gl_account' => '1002',
+                                    'account_description' => $this->getGlAccount('1004'),
+                                    'gl_account' => '1004',
                                     'type' => 'Payment',
                                     'user' => 'Senthil',
                                 );
@@ -2990,6 +2990,10 @@ public function saveBidByAgent(){
 		$total_amounts = array();
 		$new_status = array();
 		foreach ($data as $keys=>$values){
+
+			$this->PayDuesGeneralLedger($values,$bank_account_id,$payment_mode);
+
+			// die;
 
 			$emi_id = isset( $values['id']) ? $values['id'] :''	;		
 			$emi_amount=  isset( $values['amount']) ? $values['amount'] :'' ;
@@ -3169,7 +3173,9 @@ public function saveBidByAgent(){
 					);
 				}
 			  }						
-			}  				
+			}
+			
+			
 		}
 		$date = date('d/m/y H:i:s');
 		$new_zrr = array();
@@ -3237,35 +3243,10 @@ public function saveBidByAgent(){
 		  );
 		  
 		if(!empty($emi_ids)){
-		    $getname  = $this->db->where('member_id',$member_id['member_id'])->get('tbl_members')->row_array();
-		    $data1 = array(
-        	    'reference' => 'PayEmi',
-        	    'is_system' => 'Yes',
-        	    'added_date' => date('Y-m-d h:i:s')
-        	);
-		    
-		    $data2 = array(
-        	    'reference' => 'Subscriber',
-        	    'debit' => $sumofdueemi
-        	);
-		    
-		    $data3 = array(
-        	    'reference' => 'Company Emi Account',
-        	    'credit' => $sumofdueemi
-        	);
-        	
-        	$data4 = array(
-        	    'reference' => $getname['name'].' paid '.$plan_name['plan_name'].' emi of '.$sumofdueemi,
-        	);
-        
-        	$this->db->insert('tbl_ledger_transactions',$data1);
-        	$this->db->insert('tbl_ledger_transactions',$data2);
-        	$this->db->insert('tbl_ledger_transactions',$data3);
-        	$this->db->insert('tbl_ledger_transactions',$data4);
 		   
     		$this->db->insert('tbl_transactions',$history_data);
     		$insert_id = $this->db->insert_id();
-    		$this->SubmitGeneralLedgerMaster($history_data);
+    		// $this->SubmitGeneralLedgerMaster($history_data);
     		$output = array(
     			'status'=>'success',
     			'message'=>'Dues Paid Successfully',
@@ -6777,7 +6758,7 @@ public function saveBidByAgent(){
 				'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
 				'added_date' => date('Y-m-d h:i:s'),
 				'account_description' => $this->getGlAccount('1003'),
-				'gl_account' => '1002',
+				'gl_account' => '1003',
 				'type' => 'Payment',
 				'user' => 'Senthil',
 		);
@@ -6798,7 +6779,7 @@ public function saveBidByAgent(){
 			'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
 			'added_date' => date('Y-m-d h:i:s'),
 			'account_description' => $this->getGlAccount('1004'),
-			'gl_account' => '1002',
+			'gl_account' => '1004',
 			'type' => 'Payment',
 			'user' => 'Senthil',
 		);
@@ -6868,7 +6849,7 @@ public function saveBidByAgent(){
 				'account_name' => isset($mamberdetail['name']) ? $mamberdetail['name'] : '',
 				'added_date' => date('Y-m-d h:i:s'),
 				'account_description' => $this->getGlAccount('1003'),
-				'gl_account' => '1002',
+				'gl_account' => '1003',
 				'type' => 'Payment',
 				'user' => 'Senthil',
 		);
@@ -7225,7 +7206,7 @@ public function saveBidByAgent(){
 				'transaction_type' => 'Dividend',
 				'transaction_description' => 'Dividend Allocation by plan to Individual subscribers',
 				'amount' => isset($each_divident) ? $each_divident : '',
-				'dr_cr' =>'Dr',
+				'dr_cr' =>'Cr',
 				'sub_id' => isset($member_data_2['subscriber_id']) ? $member_data_2['subscriber_id'] : '',
 				'account_name' => isset($member_data_2['name']) ? $member_data_2['name'] : '',
 				'added_date' => date('Y-m-d h:i:s'),
@@ -7242,6 +7223,64 @@ public function saveBidByAgent(){
 	function get_member_detail($member_id){
 		$data = $this->db->where('member_id',$member_id)->get('tbl_members')->row_array();
 		return $data;
+	}
+
+	public function PayDuesGeneralLedger($data,$bank_account_id,$payment_mode){
+		
+		if($payment_mode == 'Cash'){
+			$transaction_mode = 'C1 - Cash';
+			$gl_account = '1000';
+		}else{
+			$transaction_mode = 'B2 - Online transfer';
+			$gl_account = '1011';
+
+		}
+		$emi_data = $this->db->where('emi_id',$data['id'])->get('tbl_emi')->row_array();
+		$plandetails = $this->db->where('plan_id',$emi_data['plan_id'])->get('tbl_plans')->row_array();
+		$member_data_2 = $this->get_member_detail($emi_data['member_id']);
+		
+		$ledgerdata1 = array(
+			'insert_id'=> '1',
+			'c_code' => '206',
+			'plan_id' => $emi_data['plan_id'],
+			'category_desc' => 'Subscription Money Received',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'Subscription Received',
+			'transaction_description' => '',
+			'amount' => isset($data['amount']) ? $data['amount'] :'',
+			'dr_cr' =>'Dr',
+			'sub_id' => isset($member_data_2['subscriber_id']) ? $member_data_2['subscriber_id'] : '',
+			'account_name' => isset($member_data_2['name']) ? $member_data_2['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount($gl_account),
+			'gl_account' => $gl_account,
+			'type' => 'Payment',
+			'user'=> 'Senthil',
+			'slot_number' => isset($emi_data['slot_number']) ? $emi_data['slot_number'] :'',
+		);
+		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+		$ledgerdata1 = array(
+			'insert_id'=> '1',
+			'c_code' => '206',
+			'plan_id' => $emi_data['plan_id'],
+			'category_desc' => 'Subscription Money Received',
+			'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+			'transaction_mode' => 'J1 - Internal',
+			'transaction_type' => 'Subscription Received',
+			'transaction_description' => '',
+			'amount' => isset($data['amount']) ? $data['amount'] :'',
+			'dr_cr' =>'Cr',
+			'sub_id' => isset($member_data_2['subscriber_id']) ? $member_data_2['subscriber_id'] : '',
+			'account_name' => isset($member_data_2['name']) ? $member_data_2['name'] : '',
+			'added_date' => date('Y-m-d h:i:s'),
+			'account_description' => $this->getGlAccount('1002'),
+			'gl_account' => '1002',
+			'type' => 'Payment',
+			'user' =>'Senthil',
+			'slot_number' => isset($emi_data['slot_number']) ? $emi_data['slot_number'] :'',
+		);
+		$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
 	}
 
 	
