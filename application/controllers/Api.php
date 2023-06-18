@@ -1437,6 +1437,42 @@ public function saveBidByAgent(){
 	   }
 	   echo json_encode($output); die;
 	}
+
+	public function GetSlotsEmies(){
+		$data =  json_decode($this->data);
+		$slot_number = isset($data->slot_number) ? $data->slot_number :'';
+		$plan_id = isset($data->plan_id) ? $data->plan_id :'';
+		$getchit = $this->db->where('slot_number',$slot_number)->where('plan_id',$plan_id)->get('tbl_emi')->result_array();
+		$plan_data = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
+		$months_completed = isset($plan_data['months_completed']) ? $plan_data['months_completed'] : '';		
+		$current_dues = [];
+		foreach($getchit as $key=>$val){
+			if($val['emi_no'] <= $months_completed){
+				$current_dues[] = $val;
+			}
+		}
+
+		$all_emi = [];
+		$total_dues = 0;
+		foreach( $current_dues as $key=>$values){
+			if(!empty($values['divident'])){
+			    $emi = ($values['plan_emi'] - $values['divident']);
+			}else{
+				$emi = $values['plan_emi'];
+			}
+			$all_emi[] = array(
+				'emi_id' => $values['emi_id'],
+				'amount' => $emi,
+				'plan_id' => $values['plan_id']
+			);
+			$total_dues += $emi;
+		}
+
+		print_r($all_emi);die;
+		
+		
+		
+	}
 	
 	public function payEmi(){
 	    $data =  json_decode($this->data);
@@ -3834,11 +3870,11 @@ public function saveBidByAgent(){
 				$slot_number = isset($bid_data['slot_number']) ? $bid_data['slot_number'] : '';
 				$plan_details = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
 				
-				$gst_amount = $plan_details['min_bid_amount'] * $plan_details['plan_gst'] / 100;
+				$formen_com_gst = $plan_details['min_bid_amount'] * $plan_details['plan_gst'] / 100;
 				
 				$admission_amount_gst = $plan_details['admission_amount'] *  $plan_details['plan_gst'] / 100;
 				
-				$chit_amount2 = ($bid_data['bid_amount'] - $gst_amount - $plan_details['admission_amount'] - $admission_amount_gst);
+				$chit_amount2 = ($bid_data['bid_amount'] - $formen_com_gst - $plan_details['admission_amount'] - $admission_amount_gst);
 				
 				$chit_amount = $bid_data['bid_amount'];
 				
@@ -6445,6 +6481,34 @@ public function saveBidByAgent(){
         	}
         	echo json_encode($output);die;
     }
+
+	public function getuserforhandoverschit(){
+		$data =  json_decode($this->data);
+	   $member_id = isset($data->member_id) ? $data->member_id : '';
+	//    $chit_data = $this->db->where('member_id',$member_id)->get('tbl_chits')->result_array();
+	   $chit_data = $this->db->where('is_hand_over!=','yes')->where('member_id',$member_id)->get('tbl_chits')->result_array();
+	   if(!empty($chit_data)){
+		   $new_array = array();
+		   foreach($chit_data as $key=>$val){
+			   $plan_data = $this->db->where('plan_id',$val['plan_id'])->get('tbl_plans')->row_array();
+			   $val['plan_name'] = $plan_data['plan_name'];
+			   $val['plan_amount'] = $plan_data['plan_amount'];
+			   $new_array[] = $val;
+		   }
+				$output = array(
+					'status' => 'Success',
+					'message' => 'fetch successfully',
+					'data' => $new_array,
+				  );
+		   }else{
+			   $output = array(
+					'status' => 'Failure',
+					'message' => 'No data found',
+					'data' => []
+				);
+		   }
+		   echo json_encode($output);die;
+   }
     
     public function subscribeRequestBymember(){
         $data =  json_decode($this->data);
