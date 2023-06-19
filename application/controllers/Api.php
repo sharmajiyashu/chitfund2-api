@@ -1468,10 +1468,58 @@ public function saveBidByAgent(){
 			$total_dues += $emi;
 		}
 
-		print_r($all_emi);die;
-		
-		
-		
+		if($total_dues != 0){			 
+			$output = array(
+				'status' => Success,
+				'message' => 'Emi Fetched Successfully',
+				'data' => $total_dues
+				);
+		}else{
+			$output = array(
+					'status' => Failure,
+					'message' => "Invalid data.",
+					'data' => $total_dues
+				);    
+		}
+	   	echo json_encode($output); die;
+	}
+
+	public function paySlotsCurrentmies($slot_number,$plan_id){
+		$slot_number = isset($slot_number) ? $slot_number :'';
+		$plan_id = isset($plan_id) ? $plan_id :'';
+		$getchit = $this->db->where('slot_number',$slot_number)->where('plan_id',$plan_id)->get('tbl_emi')->result_array();
+		$plan_data = $this->db->where('plan_id',$plan_id)->get('tbl_plans')->row_array();
+		$months_completed = isset($plan_data['months_completed']) ? $plan_data['months_completed'] : '';		
+		$current_dues = [];
+		foreach($getchit as $key=>$values){
+			if($values['emi_no'] <= $months_completed){
+				$current_dues[] = $values;
+				$values['id'] = $values['emi_id'];
+				$values['amount'] = $values['emi_id'];
+				
+			}
+		}
+
+		$all_emi = [];
+		$total_dues = 0;
+		foreach( $current_dues as $key=>$values){
+			if(!empty($values['divident'])){
+			    $emi = ($values['plan_emi'] - $values['divident']);
+			}else{
+				$emi = $values['plan_emi'];
+			}
+			$all_emi[] = array(
+				'id' => $values['emi_id'],
+				'amount' => $emi,
+				'plan_id' => $values['plan_id']
+			);
+			$total_dues += $emi;
+		}
+		$bank_account_id = 1;
+		$payment_mode = "Online";
+		foreach($all_emi as $key=>$val){
+			$this->PayDuesGeneralLedger($val,$bank_account_id,$payment_mode);
+		}
 	}
 	
 	public function payEmi(){
@@ -3117,98 +3165,98 @@ public function saveBidByAgent(){
 			}			
 		  
 		  	if($status == 'plan_emi'){
-			$data = $this->db->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
-			if(!empty($emi_id)){
-				if($data['emi_status'] == 'due'){
-					if($data['plan_emi'] == $emi_amount){
-						$update_status = array(
-						  'emi_status' =>'paid'
-					);
-					$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
-					$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
-					$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
-						$emi_ids[] = $emi_id;
-						$total_amounts[] = $emi_amount;
-
-					$output = array(
-						'status'=>'success',
-						'message'=>'Dues Paid Successfully',
-						'data'=>$emi_id.','.'plan_emi'
-					);
-					}elseif($data['amount_due'] == $emi_amount){
-						$update_status = array(
-						  'emi_status' =>'paid'
-					);
-					$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
-					$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
-					$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
-						$emi_ids[] = $emi_id;
-						$total_amounts[] = $emi_amount;
-
-					$output = array(
-						'status'=>'success',
-						'message'=>'Dues Paid Successfully',
-						'data'=>$emi_id.','.'plan_emi'
-					);
-					}else if($data['plan_emi'] > $emi_amount){
-						if($data['is_partial_payment']=='Yes'){
-							$partial_pay_amount = $data['partial_paid_amount']+$emi_amount;
-							$partial_due_amount = $data['amount_due']-$emi_amount;
-							$partial_pay_amount = round($partial_pay_amount, 0);
-							$partial_due_amount = round($partial_due_amount, 0);
-							$partial_update = array(
-								'partial_paid_amount'=>$partial_pay_amount,
-								'amount_due'=>$partial_due_amount
-							);
-							$update_data = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$partial_update);
-							$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
-							$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
+				$data = $this->db->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
+				if(!empty($emi_id)){
+					if($data['emi_status'] == 'due'){
+						if($data['plan_emi'] == $emi_amount){
+							$update_status = array(
+							'emi_status' =>'paid'
+						);
+						$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
+						$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
+						$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
 							$emi_ids[] = $emi_id;
-							$total_amounts[] = $emi_amount;	
-							
-						}else{
-							 $partial_paid_amount = $data['plan_emi'] - $emi_amount;
-							 $partial_paid_amount = round($partial_paid_amount, 0);
-							 if(!empty($data['divident'])){
-							     $amount_due = $partial_paid_amount - $data['divident'];
-							 }else{
-							     $amount_due = $partial_paid_amount;
-							 }
-							 $emi_amount = round($emi_amount, 0);
-							 $amount_due1 = round($amount_due, 0);
-							 $data = array(
-								'is_partial_payment'=>'Yes',
-								'amount_due'=>$amount_due1,
-								'partial_paid_amount'=>$emi_amount
-							);
-							$this->db->where('emi_id',$emi_id)->update('tbl_emi',$data);
-							$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
-							$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
+							$total_amounts[] = $emi_amount;
+
+						$output = array(
+							'status'=>'success',
+							'message'=>'Dues Paid Successfully',
+							'data'=>$emi_id.','.'plan_emi'
+						);
+						}elseif($data['amount_due'] == $emi_amount){
+							$update_status = array(
+							'emi_status' =>'paid'
+						);
+						$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
+						$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
+						$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
 							$emi_ids[] = $emi_id;
-							$total_amounts[] = $emi_amount;	
-							if($amount_due1 == 0){
-							    $update_status = array(
-                					 'emi_status' =>'paid'
-                					 );
-                				$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
+							$total_amounts[] = $emi_amount;
+
+						$output = array(
+							'status'=>'success',
+							'message'=>'Dues Paid Successfully',
+							'data'=>$emi_id.','.'plan_emi'
+						);
+						}else if($data['plan_emi'] > $emi_amount){
+							if($data['is_partial_payment']=='Yes'){
+								$partial_pay_amount = $data['partial_paid_amount']+$emi_amount;
+								$partial_due_amount = $data['amount_due']-$emi_amount;
+								$partial_pay_amount = round($partial_pay_amount, 0);
+								$partial_due_amount = round($partial_due_amount, 0);
+								$partial_update = array(
+									'partial_paid_amount'=>$partial_pay_amount,
+									'amount_due'=>$partial_due_amount
+								);
+								$update_data = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$partial_update);
+								$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
+								$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
+								$emi_ids[] = $emi_id;
+								$total_amounts[] = $emi_amount;	
+								
+							}else{
+								$partial_paid_amount = $data['plan_emi'] - $emi_amount;
+								$partial_paid_amount = round($partial_paid_amount, 0);
+								if(!empty($data['divident'])){
+									$amount_due = $partial_paid_amount - $data['divident'];
+								}else{
+									$amount_due = $partial_paid_amount;
+								}
+								$emi_amount = round($emi_amount, 0);
+								$amount_due1 = round($amount_due, 0);
+								$data = array(
+									'is_partial_payment'=>'Yes',
+									'amount_due'=>$amount_due1,
+									'partial_paid_amount'=>$emi_amount
+								);
+								$this->db->where('emi_id',$emi_id)->update('tbl_emi',$data);
+								$member_id = $this->db->select('member_id,plan_id')->where('emi_id',$emi_id)->get('tbl_emi')->row_array();
+								$plan_name = $this->db->select('plan_name')->where('plan_id',$member_id['plan_id'])->get('tbl_plans')->row_array();
+								$emi_ids[] = $emi_id;
+								$total_amounts[] = $emi_amount;	
+								if($amount_due1 == 0){
+									$update_status = array(
+										'emi_status' =>'paid'
+										);
+									$update2 = $this->db->where('emi_id',$emi_id)->update('tbl_emi',$update_status);
+								}
 							}
-						}
 
+						}else{
+							$output = array(
+								'status'=>'Failure',
+								'message'=>'Amount not Correct',
+								'data'=>$emi_id.','.'plan_emi'
+							);
+						}
 					}else{
 						$output = array(
-							'status'=>'Failure',
-							'message'=>'Amount not Correct',
+							'status' => 'Failure',
+							'message' => 'This emi already paid',
 							'data'=>$emi_id.','.'plan_emi'
 						);
 					}
-				}else{
-					$output = array(
-						'status' => 'Failure',
-						'message' => 'This emi already paid',
-						'data'=>$emi_id.','.'plan_emi'
-					);
-				}
-			  }						
+				}						
 			}
 			
 			
@@ -3562,7 +3610,9 @@ public function saveBidByAgent(){
 		$five_hundred = isset($data->five_hundred) ? $data->five_hundred : '';
 		$two_thousand = isset($data->two_thousand) ? $data->two_thousand : '';
 		$gst = isset($data->gst) ? $data->gst : '';
-		$chit_detail = $this->db->select('member_id')->where('chit_id',$chit_id)->get('tbl_chits')->row_array();
+		$chit_detail = $this->db->select('member_id,slot_number,plan_id')->where('chit_id',$chit_id)->get('tbl_chits')->row_array();
+
+		
 		if(!empty($chit_detail)){
 		    $member_id = $chit_detail['member_id'];
         		$transcation_amount = $amount;
@@ -3574,28 +3624,11 @@ public function saveBidByAgent(){
                 $cheque_no = $data->cheque_no;	
     			$bank_account_id = $data->bank_account_id;
     			$payment_proof =  isset($data->payment_proof) ? $data->payment_proof : '';
-    // 			$current_bank_amount_less_handover_amount = $current_account_balance-$amount;
-				// $bank_data = array(
-				// 	'current_account_balance'=>$current_bank_amount_less_handover_amount
-				// );
-				// $bank_update = $this->db->where('bank_account_id',$bank_account_id)->update('bank_accounts',$bank_data);
-				
-				// $bankaccountdetail = $this->db->select('account_number,current_account_balance')->where('bank_account_id',$bank_account_id)->get('bank_accounts')->row_array();	
-				// $bank_account_number = $bankaccountdetail['account_number'];
-				// $current_account_balance = $bankaccountdetail['current_account_balance'];
-				// echo json_encode($payment_mode);die;
+    
 				
         }elseif($payment_mode == 'online'){
 			    $bank_account_id = $data->bank_account_id;
 		     	$payment_proof =  isset($data->payment_proof) ? $data->payment_proof : '';
-		  //   	$current_bank_amount_less_handover_amount = $current_account_balance-$amount;
-				// $bank_data = array(
-				// 	'current_account_balance'=>$current_bank_amount_less_handover_amount
-				// );
-				// $bank_update = $this->db->where('bank_account_id',$bank_account_id)->update('bank_accounts',$bank_data);
-				// $bankaccountdetail = $this->db->select('account_number,current_account_balance')->where('bank_account_id',$bank_account_id)->get('bank_accounts')->row_array();	
-				// $bank_account_number = $bankaccountdetail['account_number'];
-				// $current_account_balance = $bankaccountdetail['current_account_balance'];
         }
             
             $chit_detail_is_hnd = $this->db->select('is_hand_over')->where('chit_id',$chit_id)->get('tbl_chits')->row_array();
@@ -3626,6 +3659,9 @@ public function saveBidByAgent(){
         		    $after_gst_amount = $amount + $gst_amount;
         		    $is_gst_included = 'Yes';
         		}
+
+				$chit_detail = $this->db->where('chit_id',$chit_id)->get('tbl_chits')->row_array();
+				$plandetails = $this->db->where('plan_id',$chit_detail['plan_id'])->get('tbl_plans')->row_array();
 				$company_transaction = array(
 					'transaction_type'=>'subscriber money',
 					'transaction_amount'=> isset($amount) ? $amount : '0',
@@ -3647,7 +3683,54 @@ public function saveBidByAgent(){
 				);
 			
 				$this->db->insert('tbl_transactions',$company_transaction);
-				$this->SubmitGeneralLedgerMaster($company_transaction);
+
+				$member_data_2 = $this->get_member_detail($member_id);
+				$ledgerdata1 = array(
+					'insert_id'=> '1',
+					'c_code' => '502',
+					'plan_id' => $chit_detail['plan_id'],
+					'category_desc' => 'Prized Money payment',
+					'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+					'transaction_mode' => 'B2 - Online transfer',
+					'transaction_type' => 'Prized Payment',
+					'transaction_description' => '',
+					'amount' => isset($amount) ? $amount :'',
+					'dr_cr' =>'Dr',
+					'sub_id' => isset($member_data_2['subscriber_id']) ? $member_data_2['subscriber_id'] : '',
+					'account_name' => isset($member_data_2['name']) ? $member_data_2['name'] : '',
+					'added_date' => date('Y-m-d h:i:s'),
+					'account_description' => $this->getGlAccount('1002'),
+					'gl_account' => '1002',
+					'type' => 'Payment',
+					'user'=> 'Senthil',
+					'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+				);
+				$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+				$ledgerdata1 = array(
+					'insert_id'=> '1',
+					'c_code' => '502',
+					'plan_id' => $chit_detail['plan_id'],
+					'category_desc' => 'Prized Money payment',
+					'plan_name' => isset($plandetails['plan_name']) ? $plandetails['plan_name'] :'',
+					'transaction_mode' => 'B2 - Online transfer',
+					'transaction_type' => 'Prized Payment',
+					'transaction_description' => '',
+					'amount' => isset($amount) ? $amount :'',
+					'dr_cr' =>'Cr',
+					'sub_id' => isset($member_data_2['subscriber_id']) ? $member_data_2['subscriber_id'] : '',
+					'account_name' => isset($member_data_2['name']) ? $member_data_2['name'] : '',
+					'added_date' => date('Y-m-d h:i:s'),
+					'account_description' => $this->getGlAccount('1011'),
+					'gl_account' => '1011',
+					'type' => 'Payment',
+					'user' =>'Senthil',
+					'slot_number' => isset($chit_detail['slot_number']) ? $chit_detail['slot_number'] :'',
+				);
+				$insert_data =  $this->db->insert('tbl_general_ledger_master',$ledgerdata1);
+
+				
+				$this->paySlotsCurrentmies($chit_detail['slot_number'],$chit_detail['plan_id']);
+
 				$output = array(
 					'status'=>'success',
 					'message'=>'Chit handover successfully',
